@@ -1,10 +1,10 @@
 {% set flavor_name = flavor_name or "m1.tiny_test" %}
 {% set image_name = image_name or "TestCirros-0.4.0" %}
 {% set availability_zone = "nova" %}
-{% set concurrency = 7 %}
+{% set concurrency = 4 %}
 {% set times = 100 %}
-{% set users = 2 %}
-{% set tenants = 2 %}
+{% set users = 1 %}
+{% set tenants = 1 %}
 {
   "NovaServers.boot_and_delete_server": [
   {
