@@ -1,8 +1,8 @@
-{% set concurrency = 40 %}
+{% set concurrency = 100 %}
 {% set volume_size = 2 %}
 {% set times = 300 %}
 {% set users = 1 %}
-{% set tenants = 2 %}
+{% set tenants = 1 %}
 {
     "CinderVolumes.create_and_delete_volume": [
         {
