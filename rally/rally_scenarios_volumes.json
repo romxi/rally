@@ -1,4 +1,4 @@
-{% set concurrency = 20 %}
+{% set concurrency = 40 %}
 {% set volume_size = 1 %}
 {% set times = 300 %}
 {% set users = 3 %}
