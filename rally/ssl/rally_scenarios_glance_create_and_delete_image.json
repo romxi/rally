@@ -1,5 +1,5 @@
-{% set concurrency = 40 %}
-{% set times = 1000 %}
+{% set concurrency = 30 %}
+{% set times = 500 %}
 {% set users = 3 %}
 {% set tenants = 10 %}
 {% set rbd_image = "http://10.11.0.11/cirros-0.4.0-x86_64-disk.img" %}
