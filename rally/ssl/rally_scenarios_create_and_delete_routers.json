@@ -1,0 +1,37 @@
+{% set concurrency = 50 %}
+{% set times = 800 %}
+{% set users = 3 %}
+{% set tenants = 10 %}
+{
+  "NeutronNetworks.create_and_delete_routers": [
+  {
+    "args": {
+      "network_create_args": {},
+      "subnet_create_args": {},
+      "subnet_cidr_start": "1.1.0.0/30",
+      "subnets_per_network": 2,
+      "router_create_args": {}
+    },
+    "runner": {
+      "type": "constant",
+      "concurrency": {{concurrency}},
+      "times": {{times}}
+    },
+    "context": {
+      "users": {
+        "tenants": {{users}},
+        "users_per_tenant": {{tenants}}
+      },
+      "quotas": {
+        "neutron": {
+          "network": -1,
+          "subnet": -1,
+          "router": -1
+        }
+      }
+    },
+    "sla": { "failure_rate": { "max": 0 } }
+  }
+  ]
+}
+
