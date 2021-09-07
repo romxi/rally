@@ -1,7 +1,7 @@
-{% set concurrency = 30 %}
+{% set concurrency = 20 %}
 {% set times = 500 %}
 {% set users = 3 %}
-{% set tenants = 10 %}
+{% set tenants = 5 %}
 {% set rbd_image = "http://10.11.0.11/cirros-0.4.0-x86_64-disk.img" %}
 {
   "GlanceImages.create_and_delete_image": [
