@@ -1,0 +1,22 @@
+{% set times = 10000 %}
+{% set users = 10 %}
+{% set tenants = 10 %}
+{% set rps = 12 %}
+{
+  "Authenticate.keystone": [
+    {
+      "runner": {
+        "type": "rps",
+        "times": {{times}},
+        "rps": {{rps}}
+    },
+      "context": {
+        "users": {
+          "tenants": {{tenants}},
+          "users_per_tenant": {{users}}
+        }
+      }
+    }
+  ]
+}
+

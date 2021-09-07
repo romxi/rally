@@ -1,0 +1,42 @@
+{% set concurrency = 100 %}
+{% set volume_size = 1 %}
+{% set times = 500 %}
+{% set users = 10 %}
+{% set tenants = 1 %}
+{
+    "CinderVolumes.create_and_delete_volume": [
+        {
+            "args": {
+                "size": {{volume_size}}
+            },
+            "runner": {
+                "type": "constant",
+                "times": {{times}},
+                "concurrency": {{concurrency}}
+            },
+            "context": {
+                "users": {
+                    "tenants": {{tenants}},
+                    "users_per_tenant": {{users}}
+                },
+                "api_versions@openstack": {
+                    "cinder": {
+                        "service_type": "volumev3"
+                    }
+                },
+                "quotas": {
+                    "cinder": {
+                        "volumes": -1,
+                        "gigabytes": -1,
+                        "snapshots": -1
+                    }
+                }
+            },
+            "sla": {
+                "failure_rate": {
+                    "max": 0
+                }
+            }
+        }
+    ]
+}

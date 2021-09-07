@@ -1,0 +1,26 @@
+{% set concurrency = 50 %}
+{% set times = 800 %}
+{% set users = 3 %}
+{% set tenants = 10 %}
+{
+  "NeutronNetworks.create_and_delete_networks": [
+  {
+    "runner": {
+      "type": "constant",
+      "concurrency": {{concurrency}},
+      "times": {{times}}
+    },
+    "context": {
+      "users": {
+        "tenants": {{users}},
+        "users_per_tenant": {{tenants}}
+      },
+      "quotas": {
+        "neutron": { "network": -1 }
+      }
+    },
+    "sla": { "failure_rate": { "max": 0 } }
+  }
+  ]
+}
+

@@ -1,0 +1,29 @@
+{% set concurrency = 40 %}
+{% set times = 1000 %}
+{% set users = 3 %}
+{% set tenants = 10 %}
+{% set rbd_image = "/home/rally/data/cirros-0.4.0-x86_64-disk.img" %}
+{
+  "GlanceImages.create_and_delete_image": [
+  {
+    "args": {
+      "image_location": "{{rbd_image}}",
+      "container_format": "bare",
+      "disk_format": "qcow2"
+    },
+    "runner": {
+      "type": "constant",
+      "concurrency": {{concurrency}},
+      "times": {{times}}
+    },
+    "context": {
+      "users": {
+        "tenants": {{users}},
+        "users_per_tenant": {{tenants}}
+      }
+    },
+    "sla": { "failure_rate": { "max": 0 } }
+  }
+  ]
+}
+
