@@ -1,7 +1,7 @@
-{% set concurrency = 50 %}
-{% set times = 800 %}
+{% set concurrency = 30 %}
+{% set times = 400 %}
 {% set users = 3 %}
-{% set tenants = 10 %}
+{% set tenants = 5 %}
 {
   "NeutronNetworks.create_and_delete_routers": [
   {
